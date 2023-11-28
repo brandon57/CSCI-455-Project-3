@@ -6,10 +6,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="Libraries/hadoop-client-2.10.2.jar"/>
-	<classpathentry kind="lib" path="Libraries/hadoop-common-2.10.2.jar"/>
-	<classpathentry kind="lib" path="Libraries/hadoop-hdfs-2.10.2.jar"/>
-	<classpathentry kind="lib" path="Libraries/hadoop-mapreduce-client-core-2.10.2.jar"/>
-	<classpathentry kind="lib" path="Libraries/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

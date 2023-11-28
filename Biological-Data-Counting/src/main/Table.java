@@ -1,4 +1,4 @@
-package main;
+//package main;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ public class Table {
 	
 	private Map<Integer, Integer> chromosomes = new HashMap();
 	private Map<Integer, Integer> bins = new HashMap();
-	public Map<Integer, ChromosomeBin> binPairs = new HashMap();
+	public static Map<Integer, ChromosomeBin> binPairs = new HashMap();
 	
 	public Table()
 	{
@@ -48,7 +48,7 @@ public class Table {
 	{
 		for(Map.Entry<Integer, Integer> temp : chromosomes.entrySet())
 		{
-			bins.put(temp.getKey(), (temp.getValue()+1) / 100000);
+			bins.put(temp.getKey(), (temp.getValue()+100000) / 100000);
 		}
 	}
 	
@@ -78,6 +78,46 @@ public class Table {
 			
 			//.put(temp.getKey(), temp.getValue());
 		}
+	}
+	
+	public long getBin(Integer chrom, long basePair)
+	{
+		long tempBin = (basePair + 100000) / 100000;
+		int i = 0;
+		for(Map.Entry<Integer, ChromosomeBin> temp2 : binPairs.entrySet())
+		{
+			if(i < chrom)
+			{
+				tempBin += temp2.getValue().getEndingIndex();
+			}
+			else
+			{
+				break;
+			}
+		}
+		return tempBin;
+	}
+	
+	public boolean validBin(Integer chrom, long basePair)
+	{
+		//long tempBin = (basePair + 100000) / 100000;
+		
+		long tempBin = getBin(chrom, basePair);
+//		for(Map.Entry<Integer, ChromosomeBin> temp2 : binPairs.entrySet())
+//		{
+//			tempBin += temp2.getValue().getStartingIndex();
+//		}
+		long length = binPairs.get(chrom).getEndingIndex() - binPairs.get(chrom).getStartingIndex();
+		
+		return (chrom != null || (tempBin < binPairs.get(chrom).getStartingIndex() && tempBin > binPairs.get(chrom).getEndingIndex()));
+//		if(chrom != (null) && (tempBin > binPairs.get(chrom).getStartingIndex() && tempBin < binPairs.get(chrom).getEndingIndex()))
+//		{
+//			return true;
+//		}
+//		else
+//		{
+//			return false;
+//		}
 	}
 	
 	
