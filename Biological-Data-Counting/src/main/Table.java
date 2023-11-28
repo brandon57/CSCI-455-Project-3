@@ -98,6 +98,7 @@ public class Table {
 		return tempBin;
 	}
 	
+	//Checks if the Bins are valid
 	public boolean validBin(Integer chrom, long basePair)
 	{
 		//long tempBin = (basePair + 100000) / 100000;
