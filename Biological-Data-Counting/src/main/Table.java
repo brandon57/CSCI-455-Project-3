@@ -7,7 +7,6 @@ public class Table {
 	
 	private Map<Integer, Integer> chromosomes = new HashMap();
 	private Map<Integer, Integer> bins = new HashMap();
-	public static Map<Integer, ChromosomeBin> binPairs = new HashMap();
 	
 	public Table()
 	{
@@ -39,9 +38,7 @@ public class Table {
 		chromosomes.put(21, 46709983);
 		chromosomes.put(22, 50818468);
 		chromosomes.put(23, 156040895);
-		//chromosomes.put(24, 57227415);
 		createBins();
-		createBinPairs();
 	}
 	
 	private void createBins()
@@ -49,32 +46,6 @@ public class Table {
 		for(Map.Entry<Integer, Integer> temp : chromosomes.entrySet())
 		{
 			bins.put(temp.getKey(), (temp.getValue()+100000) / 100000);
-		}
-	}
-	
-	private void createBinPairs()
-	{
-		Integer start = 0;
-		Integer end = 0;
-		for(Map.Entry<Integer, Integer> temp : bins.entrySet())
-		{
-			ChromosomeBin index = new ChromosomeBin();
-			if(temp.getKey().equals(1))
-			{
-				index.setStartingIndex(1);
-				index.setEndingIndex(temp.getValue());
-			}
-			else
-			{
-				for(Map.Entry<Integer, ChromosomeBin> temp2 : binPairs.entrySet())
-				{
-					start += temp2.getValue().getStartingIndex();
-					end += temp2.getValue().getEndingIndex();
-				}
-				index.setStartingIndex(start);
-				index.setEndingIndex(end + temp.getValue());
-			}
-			binPairs.put(temp.getKey(), index);
 		}
 	}
 	

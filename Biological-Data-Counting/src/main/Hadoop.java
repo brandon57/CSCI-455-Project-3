@@ -8,8 +8,6 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
 
-
-
 public class Hadoop {
 	
 	public static Table chromTable = new Table();
