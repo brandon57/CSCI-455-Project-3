@@ -75,20 +75,17 @@ public class Table {
 				index.setEndingIndex(end + temp.getValue());
 			}
 			binPairs.put(temp.getKey(), index);
-			
-			//.put(temp.getKey(), temp.getValue());
 		}
 	}
 	
 	public long getBin(Integer chrom, long basePair)
 	{
 		long tempBin = (basePair + 100000) / 100000;
-		int i = 0;
-		for(Map.Entry<Integer, ChromosomeBin> temp2 : binPairs.entrySet())
+		for(Map.Entry<Integer, Integer> temp2 : bins.entrySet())
 		{
-			if(i < chrom)
+			if(temp2.getKey() != chrom)
 			{
-				tempBin += temp2.getValue().getEndingIndex();
+				tempBin += temp2.getValue();
 			}
 			else
 			{
@@ -101,26 +98,7 @@ public class Table {
 	//Checks if the Bins are valid
 	public boolean validBin(Integer chrom, long basePair)
 	{
-		//long tempBin = (basePair + 100000) / 100000;
-		
-		long tempBin = getBin(chrom, basePair);
-//		for(Map.Entry<Integer, ChromosomeBin> temp2 : binPairs.entrySet())
-//		{
-//			tempBin += temp2.getValue().getStartingIndex();
-//		}
-		long length = binPairs.get(chrom).getEndingIndex() - binPairs.get(chrom).getStartingIndex();
-		
-		return (chrom != null || (tempBin < binPairs.get(chrom).getStartingIndex() && tempBin > binPairs.get(chrom).getEndingIndex()));
-//		if(chrom != (null) && (tempBin > binPairs.get(chrom).getStartingIndex() && tempBin < binPairs.get(chrom).getEndingIndex()))
-//		{
-//			return true;
-//		}
-//		else
-//		{
-//			return false;
-//		}
+		long tempBin = (basePair + 100000) / 100000;
+		return ((chrom != null && chrom > 0 && chrom < 24) && (tempBin < bins.get(chrom)));
 	}
-	
-	
-
 }
