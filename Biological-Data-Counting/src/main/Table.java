@@ -45,13 +45,13 @@ public class Table {
 	{
 		for(Map.Entry<Integer, Integer> temp : chromosomes.entrySet())
 		{
-			bins.put(temp.getKey(), (temp.getValue()+100000) / 100000);
+			bins.put(temp.getKey(), (temp.getValue()+99999) / 100000);
 		}
 	}
 	
 	public long getBin(Integer chrom, long basePair)
 	{
-		long tempBin = (basePair + 100000) / 100000;
+		long tempBin = (basePair + 99999) / 100000;
 		for(Map.Entry<Integer, Integer> temp2 : bins.entrySet())
 		{
 			if(temp2.getKey() != chrom)
@@ -69,7 +69,7 @@ public class Table {
 	//Checks if the Bins are valid
 	public boolean validBin(Integer chrom, long basePair)
 	{
-		long tempBin = (basePair + 100000) / 100000;
-		return ((chrom != null && chrom > 0 && chrom < 24) && (tempBin < bins.get(chrom)));
+		long tempBin = (basePair + 99999) / 100000;
+		return ((chrom != null && chrom > 0 && chrom < 24) && (tempBin >= 1 && tempBin <= bins.get(chrom)));
 	}
 }
