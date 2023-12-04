@@ -25,8 +25,7 @@ public class DataMapper extends Mapper<Object, Text, Text, IntWritable> {
 			long chrom2BinPairs = Long.parseLong(line[3]);
 			
 			//Checks for errors
-			//If there is an error it sets write to false and it doesn't write it to a file
-			//Writes to file
+			//If there is an error it returns false and it doesn't write it to a file
 			if(Hadoop.chromTable.validBin(chrom1, chrom1BinPairs) && Hadoop.chromTable.validBin(chrom2, chrom2BinPairs))
 			{
 				long chrom1Bin = Hadoop.chromTable.getBin(chrom1, chrom1BinPairs);
