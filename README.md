@@ -96,7 +96,7 @@ hadoop fs -cat /user/USERNAME_HERE/project-3-455/output/part-r-*
 ```
 The output should look similar to this:
 ```
-hadoop fs -cat /user/brandon.sitarz/Project-3-455/output/part-r-00000
+brandon.sitarz@zoidberg:~$ hadoop fs -cat /user/brandon.sitarz/Project-3-455/output/part-r-00000
 (9285, 10218)   1
 (9291, 9619)    1
 (9293, 9293)    1
