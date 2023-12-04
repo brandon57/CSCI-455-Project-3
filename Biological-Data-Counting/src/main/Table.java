@@ -69,7 +69,6 @@ public class Table {
 	//Checks if the Bins are valid
 	public boolean validBin(Integer chrom, long basePair)
 	{
-		long tempBin = (basePair + 99999) / 100000;
-		return ((chrom != null && chrom > 0 && chrom < 24) && (tempBin >= 1 && tempBin <= bins.get(chrom)));
+		return ((chrom != null && chrom >= 1 && chrom < 24) && (basePair >= 1 && basePair <= chromosomes.get(chrom)));
 	}
 }
